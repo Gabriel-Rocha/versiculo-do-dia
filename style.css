@@ -1,0 +1,277 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-bottom: 5px solid #f2d338;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 40px;
+    width: 40px;
+}
+
+/* Estilo do título da página */
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: #f2d338;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+nav ul {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.donate-btn {
+    background-color: #f2d338;
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Estilo Principal */
+main {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    max-width: 800px;
+    flex: 1;
+}
+
+h2 {
+    font-size: 30px;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+}
+
+.description {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#verse-box {
+    background: #e0e0e0;
+    color: #333;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#verse-box h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+#verse-box p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+#verse-box #verse-reference {
+    font-weight: bold;
+    color: #f2d338;
+}
+
+/* Caixa de Doação abaixo da caixa "Quer receber mensagens bíblicas?" */
+#donation-box {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
+    width: 70%;
+    max-width: 800px;
+    flex: 1;
+}
+
+#donation-box p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#donation-box .donate-btn {
+    background-color: #f28a00;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#donation-box .donate-btn:hover {
+    background-color: #e07c00;
+}
+
+/* Estilo de "Quer receber mensagens bíblicas?" */
+aside {
+    background: #fef9e7;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 25%;
+    max-width: 300px;
+    flex: 1;
+}
+
+/* Estilo do botão "Sim, quero!" */
+aside form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+aside button {
+    background-color: #e65100;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+aside button:hover {
+    background-color: #d84315;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.social-media a {
+    color: white;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    #container, aside, #donation-box {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    footer {
+        text-align: center;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .donate-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+}
