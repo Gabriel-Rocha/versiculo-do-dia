@@ -8,8 +8,8 @@
     <meta name="author" content="Versículo do Dia">
     <title>Versículo do Dia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" href="../imgs/logo.png" type="image/png">
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="icon" href="src/imgs/logo.png" type="image/png">
+    <link rel="stylesheet" href="src/styles/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -17,7 +17,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="../imgs/logo.png" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px;">
+                <img src="src/imgs/logo.png" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px;">
                 <span style="font-family: 'Times New Roman', Times, serif;">VERSÍCULO DO DIA</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -139,7 +139,7 @@
         </div>
     </footer>
 
-    <script src="../js/script.js"></script>
+    <script src="src/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -199,7 +199,7 @@
                 const dataHoje = formattedDate;
     
                 // Formatação da mensagem com Markdown para negrito
-                const mensagem = `🕊 VERSÍCULO DE HOJE\n🗓 *${dataHoje}*\n\n"*${verseText}*"\n\n*${verseReference}*\n\n🌐 Acesse o site para mais: http://127.0.0.1:5500/src/pages/index.html`;
+                const mensagem = `🕊 VERSÍCULO DE HOJE\n🗓 *${dataHoje}*\n\n"*${verseText}*"\n\n*${verseReference}*\n\n🌐 Acesse o site para mais: http://127.0.0.1:5500/src/index.html`;
     
                 const linkWhatsApp = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensagem)}`;
                 const linkFacebook = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(mensagem)}`;
