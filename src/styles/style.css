@@ -347,7 +347,7 @@ footer a:hover {
 
 .popup p {
     margin-bottom: 15px;
-    font-weight: bold;
+
     font-family: 'Georgia', Times, serif;
 }
 
@@ -359,7 +359,6 @@ footer a:hover {
 .popup .btn-doacao {
     background-color: #ffc107;
     color: #fff;
-    font-weight: bold;
     text-decoration: none;
 }
 

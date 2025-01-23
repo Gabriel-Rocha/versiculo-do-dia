@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Versículo do Dia: Receba diariamente inspiração bíblica para sua vida. Explore passagens bíblicas e mensagens edificantes.">
+    <meta name="keywords" content="Bíblia, Versículo do Dia, Inspiração, Mensagens Bíblicas, Fé, Cristão">
+    <meta name="author" content="Versículo do Dia">
     <title>Versículo do Dia</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="icon" type="image/png" href="../imgs/logo.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../imgs/logo.png" type="image/png">
     <link rel="stylesheet" href="../styles/style.css">
-    <!-- Font Awesome (para os ícones) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -54,7 +55,6 @@
                 <h2>Versículo do Dia</h2>
                 <p>Diariamente um versículo ou passagem bíblica para melhorar e inspirar o seu dia.</p>
 
-                <!-- Containers lado a lado -->
                 <div id="main-content" class="d-flex justify-content-between align-items-start">
                     <!-- Container do Versículo -->
                     <div id="verse-box" class="me-3">
@@ -62,6 +62,23 @@
                         <p id="date"></p>
                         <p id="verse-text">Carregando versículo...</p>
                         <p id="verse-reference"></p>
+
+                        <p class="mt-4">Gostou do versículo do dia?</p>
+
+                        <p>Compartilhe e nos ajude a espalhar a palavra de Deus:</p>
+                        <div class="d-flex gap-2 mb-3">
+                            <a id="share-facebook" href="#" class="btn btn-outline-primary btn-sm" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a id="share-twitter" href="#" class="btn btn-outline-info btn-sm" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a id="share-whatsapp" href="#" class="btn btn-outline-success btn-sm" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+
+                        <p>Avalie o versículo:</p>
                         <div class="d-flex gap-2">
                             <button id="like-button" class="btn btn-success">
                                 <i class="fas fa-thumbs-up"></i> Gostei
@@ -122,9 +139,83 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="../js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const apiUrl = "https://raw.githubusercontent.com/thiagobodruk/biblia/refs/heads/master/json/nvi.json";
+            const dateElement = document.getElementById("date");
+            const verseTextElement = document.getElementById("verse-text");
+            const verseReferenceElement = document.getElementById("verse-reference");
+    
+            // Atualizar data
+            const today = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = today.toLocaleDateString("pt-BR", options);
+            dateElement.textContent = formattedDate;
+    
+            // Verificar se o versículo do dia já está armazenado
+            const storedData = JSON.parse(localStorage.getItem("verseOfTheDay"));
+            const storedDate = storedData?.date;
+            const isSameDay = storedDate === formattedDate;
+    
+            if (isSameDay) {
+                // Usar versículo armazenado
+                const { verse, reference } = storedData;
+                verseTextElement.textContent = verse;
+                verseReferenceElement.innerHTML = `<span class="verse-reference">${reference}</span>`;
+            } else {
+                // Buscar novo versículo e armazenar
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        const bookIndex = Math.floor(Math.random() * data.length);
+                        const book = data[bookIndex];
+                        const chapterIndex = Math.floor(Math.random() * book.chapters.length);
+                        const chapter = book.chapters[chapterIndex];
+                        const verseIndex = Math.floor(Math.random() * chapter.length);
+                        const verse = chapter[verseIndex];
+                        const reference = `${book.name} ${chapterIndex + 1}:${verseIndex + 1}`;
+    
+                        // Atualizar a página
+                        verseTextElement.textContent = verse;
+                        verseReferenceElement.innerHTML = `<span class="verse-reference">${reference}</span>`;
+                        // Salvar no localStorage
+                        localStorage.setItem(
+                            "verseOfTheDay",
+                            JSON.stringify({ date: formattedDate, verse, reference })
+                        );
+                    })
+                    .catch(error => {
+                        verseTextElement.textContent = "Erro ao carregar o versículo.";
+                        console.error("Erro ao buscar dados da API:", error);
+                    });
+            }
+    
+            // Função para gerar o link de compartilhamento
+            function gerarMensagemVersiculo() {
+                const verseText = verseTextElement.textContent;
+                const verseReference = verseReferenceElement.innerText;
+                const dataHoje = formattedDate;
+    
+                // Formatação da mensagem com Markdown para negrito
+                const mensagem = `🕊 VERSÍCULO DE HOJE\n🗓 *${dataHoje}*\n\n"*${verseText}*"\n\n*${verseReference}*\n\n🌐 Acesse o site para mais: http://127.0.0.1:5500/src/pages/index.html`;
+    
+                const linkWhatsApp = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensagem)}`;
+                const linkFacebook = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(mensagem)}`;
+                const linkTwitter = `https://twitter.com/intent/tweet?text=${encodeURIComponent(mensagem)}&url=${encodeURIComponent(window.location.href)}&hashtags=Fé,Bíblia`;
+    
+                // Atualizando os links de compartilhamento
+                document.getElementById('share-whatsapp').href = linkWhatsApp;
+                document.getElementById('share-facebook').href = linkFacebook;
+                document.getElementById('share-twitter').href = linkTwitter;
+            }
+    
+            // Chama a função para gerar os links ao carregar a página
+            gerarMensagemVersiculo();
+        });
+    </script> 
+
     <script>
         // Mostrar o popup ao carregar a página
         window.addEventListener('load', () => {
