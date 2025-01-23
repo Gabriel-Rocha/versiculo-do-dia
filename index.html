@@ -97,8 +97,8 @@
                     <!-- Container de Inscrição -->
                     <div id="email-container">
                         <h4>Receba o versículo diário no seu e-mail!</h4>
-                        <form>
-                            <input type="email" placeholder="Digite seu e-mail" required>
+                        <form id="subscription-form">
+                            <input type="email" id="email-input" placeholder="Digite seu e-mail" required>
                             <button type="submit" class="btn btn-primary mt-2">Inscrever-se</button>
                         </form>
                     </div>
@@ -248,6 +248,50 @@
                 mostrarMensagemFeedback("Obrigado pelo seu feedback! Vamos continuar trabalhando para inspirar mais pessoas. 🙏", "danger");
             });
 
+            function mostrarMensagemFeedback(mensagem, tipo) {
+                // Remover qualquer mensagem existente
+                const mensagemExistente = document.querySelector(".feedback-message");
+                if (mensagemExistente) {
+                    mensagemExistente.remove();
+                }
+
+                // Criar nova mensagem
+                const feedbackMessage = document.createElement("div");
+                feedbackMessage.className = `feedback-message ${tipo}`;
+                feedbackMessage.textContent = mensagem;
+
+                // Adicionar ao corpo do documento
+                document.body.appendChild(feedbackMessage);
+
+                // Remover mensagem após 5 segundos
+                setTimeout(() => feedbackMessage.remove(), 5000);
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("subscription-form");
+            const emailInput = document.getElementById("email-input");
+
+            form.addEventListener("submit", (event) => {
+                event.preventDefault(); // Evita o comportamento padrão do formulário
+
+                const email = emailInput.value.trim();
+
+                if (email) {
+                    // Mostrar mensagem de sucesso
+                    mostrarMensagemFeedback("E-mail cadastrado com sucesso!", "success");
+
+                    // Limpar o campo de e-mail
+                    emailInput.value = "";
+                } else {
+                    // Mostrar mensagem de erro
+                    mostrarMensagemFeedback("Por favor, insira um e-mail válido.", "error");
+                }
+            });
+
+            // Função para criar e mostrar a notificação
             function mostrarMensagemFeedback(mensagem, tipo) {
                 // Remover qualquer mensagem existente
                 const mensagemExistente = document.querySelector(".feedback-message");
