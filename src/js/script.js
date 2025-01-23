@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Usar versículo armazenado
         const { verse, reference } = storedData;
         verseTextElement.textContent = verse;
-        verseReferenceElement.innerHTML = `<span class="verse-reference">${reference}</span>`;  // Aqui fazemos a mudança para incluir o span
+        verseReferenceElement.innerHTML = `<span class="verse-reference">${reference}</span>`;
     } else {
         // Buscar novo versículo e armazenar
         fetch(apiUrl)
@@ -36,8 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Atualizar a página
                 verseTextElement.textContent = verse;
-                verseReferenceElement.innerHTML = `<span class="verse-reference">${reference}</span>`;  // Aqui fazemos a mudança para incluir o span
-
+                verseReferenceElement.innerHTML = `<span class="verse-reference">${reference}</span>`;
                 // Salvar no localStorage
                 localStorage.setItem(
                     "verseOfTheDay",

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Versículo do Dia</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="../imgs/logo.png"/>
+    <link rel="stylesheet" href="../styles/style.css">
+    <!-- Font Awesome (para os ícones) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="../imgs/logo.png" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px;">
+                <span style="font-family: 'Times New Roman', Times, serif;">VERSÍCULO DO DIA</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-warning text-white px-3 py-2" href="doacao.html" style="font-weight: bold;">Faça sua oferta</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content with Sidebar -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky">
+                    <h3>Menu</h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a href="#" class="nav-link">Antigo Testamento</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Novo Testamento</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Versículos</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Inspiração Diária</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Mais</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-4" style="min-height: 80vh;">
+                <h2>Versículo do Dia</h2>
+                <p>Diariamente um versículo ou passagem bíblica para melhorar e inspirar o seu dia.</p>
+
+                <!-- Containers lado a lado -->
+                <div id="main-content" class="d-flex justify-content-between align-items-start">
+                    <!-- Container do Versículo -->
+                    <div id="verse-box" class="me-3">
+                        <h3>Versículo de Hoje</h3>
+                        <p id="date"></p>
+                        <p id="verse-text">Carregando versículo...</p>
+                        <p id="verse-reference"></p>
+                        <div class="d-flex gap-2">
+                            <button id="like-button" class="btn btn-success">
+                                <i class="fas fa-thumbs-up"></i> Gostei
+                            </button>
+                            <button id="dislike-button" class="btn btn-danger">
+                                <i class="fas fa-thumbs-down"></i> Não Gostei
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Container de Inscrição -->
+                    <div id="email-container">
+                        <h4>Receba o versículo diário no seu e-mail!</h4>
+                        <form>
+                            <input type="email" placeholder="Digite seu e-mail" required>
+                            <button type="submit" class="btn btn-primary mt-2">Inscrever-se</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Popup de Doação -->
+    <div id="donation-popup" class="popup">
+        <p>💛 <strong>Ajude a espalhar a palavra de Deus!</strong><br>
+           Sua doação nos ajuda a levar fé, amor e inspiração para milhares de pessoas. 
+           <strong>Contribua agora e faça parte desta missão!</strong> 
+        </p>
+        <div class="d-flex justify-content-between align-items-center">
+            <button id="close-popup" class="btn btn-sm btn-danger">Fechar</button>
+            <a href="doacao.html" class="btn btn-doacao btn-sm">Contribuir agora</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Bíblia Sagrada Online</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Versículos</a></li>
+                        <li><a href="#">10 Mandamentos</a></li>
+                        <li><a href="#">Estudos Bíblicos</a></li>
+                        <li><a href="#">Devocional Diário</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 text-end">
+                    <p>© 2025 Versículo do Dia - Todos os direitos reservados.</p>
+                    <div class="social-media">
+                        <a href="#">Facebook</a> |
+                        <a href="#">Instagram</a> |
+                        <a href="#">YouTube</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="../js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Mostrar o popup ao carregar a página
+        window.addEventListener('load', () => {
+            const popup = document.getElementById('donation-popup');
+            popup.classList.add('show');
+        });
+
+        // Fechar o popup ao clicar no botão
+        document.getElementById('close-popup').addEventListener('click', () => {
+            const popup = document.getElementById('donation-popup');
+            popup.classList.remove('show');
+        });
+    </script>
+</body>
+</html>
