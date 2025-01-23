@@ -1,12 +1,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://www.seusite.com/</loc>
+        <loc>https://gabriel-rocha.github.io/versiculo-do-dia</loc>
         <lastmod>2025-01-23</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://www.seusite.com/doacao.html</loc>
+        <loc>https://gabriel-rocha.github.io/versiculo-do-dia/doacao.html</loc>
         <lastmod>2025-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>

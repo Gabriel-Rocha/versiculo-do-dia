@@ -367,3 +367,31 @@ footer a:hover {
     color: #fff;
     text-decoration: none;
 }
+
+/* Estilo para a mensagem de feedback */
+.feedback-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    animation: fade-in-out 5s;
+}
+
+.feedback-message.success {
+    background-color: #28a745; /* Verde */
+}
+
+.feedback-message.danger {
+    background-color: #dc3545; /* Vermelho */
+}
+
+@keyframes fade-in-out {
+    0% { opacity: 0; transform: translateY(-10px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-10px); }
+}

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Versículo do Dia: Receba diariamente inspiração bíblica para sua vida. Explore passagens bíblicas e mensagens edificantes.">
+    <meta name="description"
+        content="Versículo do Dia: Receba diariamente inspiração bíblica para sua vida. Explore passagens bíblicas e mensagens edificantes.">
     <meta name="keywords" content="Bíblia, Versículo do Dia, Inspiração, Mensagens Bíblicas, Fé, Cristão">
     <meta name="author" content="Versículo do Dia">
     <title>Versículo do Dia</title>
@@ -12,6 +14,7 @@
     <link rel="stylesheet" href="src/styles/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,13 +23,15 @@
                 <img src="src/imgs/logo.png" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px;">
                 <span style="font-family: 'Times New Roman', Times, serif;">VERSÍCULO DO DIA</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link btn btn-warning text-white px-3 py-2" href="doacao.html" style="font-weight: bold;">Faça sua oferta</a>
+                        <a class="nav-link btn btn-warning text-white px-3 py-2" href="doacao.html"
+                            style="font-weight: bold;">Faça sua oferta</a>
                     </li>
                 </ul>
             </div>
@@ -105,8 +110,8 @@
     <!-- Popup de Doação -->
     <div id="donation-popup" class="popup">
         <p>💛 <strong>Ajude a espalhar a palavra de Deus!</strong><br>
-           Sua doação nos ajuda a levar fé, amor e inspiração para milhares de pessoas. 
-           <strong>Contribua agora e faça parte desta missão!</strong> 
+            Sua doação nos ajuda a levar fé, amor e inspiração para milhares de pessoas.
+            <strong>Contribua agora e faça parte desta missão!</strong>
         </p>
         <div class="d-flex justify-content-between align-items-center">
             <button id="close-popup" class="btn btn-sm btn-danger">Fechar</button>
@@ -147,18 +152,18 @@
             const dateElement = document.getElementById("date");
             const verseTextElement = document.getElementById("verse-text");
             const verseReferenceElement = document.getElementById("verse-reference");
-    
+
             // Atualizar data
             const today = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const formattedDate = today.toLocaleDateString("pt-BR", options);
             dateElement.textContent = formattedDate;
-    
+
             // Verificar se o versículo do dia já está armazenado
             const storedData = JSON.parse(localStorage.getItem("verseOfTheDay"));
             const storedDate = storedData?.date;
             const isSameDay = storedDate === formattedDate;
-    
+
             if (isSameDay) {
                 // Usar versículo armazenado
                 const { verse, reference } = storedData;
@@ -176,7 +181,7 @@
                         const verseIndex = Math.floor(Math.random() * chapter.length);
                         const verse = chapter[verseIndex];
                         const reference = `${book.name} ${chapterIndex + 1}:${verseIndex + 1}`;
-    
+
                         // Atualizar a página
                         verseTextElement.textContent = verse;
                         verseReferenceElement.innerHTML = `<span class="verse-reference">${reference}</span>`;
@@ -191,30 +196,30 @@
                         console.error("Erro ao buscar dados da API:", error);
                     });
             }
-    
+
             // Função para gerar o link de compartilhamento
             function gerarMensagemVersiculo() {
                 const verseText = verseTextElement.textContent;
                 const verseReference = verseReferenceElement.innerText;
                 const dataHoje = formattedDate;
-    
+
                 // Formatação da mensagem com Markdown para negrito
                 const mensagem = `🕊 VERSÍCULO DE HOJE\n🗓 *${dataHoje}*\n\n"*${verseText}*"\n\n*${verseReference}*\n\n🌐 Acesse o site para mais: https://gabriel-rocha.github.io/versiculo-do-dia/`;
-    
+
                 const linkWhatsApp = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensagem)}`;
                 const linkFacebook = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(mensagem)}`;
                 const linkTwitter = `https://twitter.com/intent/tweet?text=${encodeURIComponent(mensagem)}&url=${encodeURIComponent(window.location.href)}&hashtags=Fé,Bíblia`;
-    
+
                 // Atualizando os links de compartilhamento
                 document.getElementById('share-whatsapp').href = linkWhatsApp;
                 document.getElementById('share-facebook').href = linkFacebook;
                 document.getElementById('share-twitter').href = linkTwitter;
             }
-    
+
             // Chama a função para gerar os links ao carregar a página
             gerarMensagemVersiculo();
         });
-    </script> 
+    </script>
 
     <script>
         // Mostrar o popup ao carregar a página
@@ -229,5 +234,41 @@
             popup.classList.remove('show');
         });
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const likeButton = document.getElementById("like-button");
+            const dislikeButton = document.getElementById("dislike-button");
+
+            likeButton.addEventListener("click", () => {
+                mostrarMensagemFeedback("Obrigado por sua avaliação! Ficamos felizes que você gostou do versículo. 🙌", "success");
+            });
+
+            dislikeButton.addEventListener("click", () => {
+                mostrarMensagemFeedback("Obrigado pelo seu feedback! Vamos continuar trabalhando para inspirar mais pessoas. 🙏", "danger");
+            });
+
+            function mostrarMensagemFeedback(mensagem, tipo) {
+                // Remover qualquer mensagem existente
+                const mensagemExistente = document.querySelector(".feedback-message");
+                if (mensagemExistente) {
+                    mensagemExistente.remove();
+                }
+
+                // Criar nova mensagem
+                const feedbackMessage = document.createElement("div");
+                feedbackMessage.className = `feedback-message ${tipo}`;
+                feedbackMessage.textContent = mensagem;
+
+                // Adicionar ao corpo do documento
+                document.body.appendChild(feedbackMessage);
+
+                // Remover mensagem após 5 segundos
+                setTimeout(() => feedbackMessage.remove(), 5000);
+            }
+        });
+    </script>
+
 </body>
+
 </html>
