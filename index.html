@@ -9,6 +9,18 @@
     <meta name="keywords" content="Bíblia, Versículo do Dia, Inspiração, Mensagens Bíblicas, Fé, Cristão">
     <meta name="author" content="Versículo do Dia">
     <title>Versículo do Dia</title>
+    <!-- SEO Avançado: Open Graph e Twitter Cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Versículo do Dia">
+    <meta property="og:description" content="Receba diariamente inspiração bíblica para sua vida. Explore passagens bíblicas e mensagens edificantes.">
+    <meta property="og:image" content="src/imgs/logo.png">
+    <meta property="og:url" content="https://gabriel-rocha.github.io/versiculo-do-dia/">
+    <meta property="og:site_name" content="Versículo do Dia">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Versículo do Dia">
+    <meta name="twitter:description" content="Receba diariamente inspiração bíblica para sua vida. Explore passagens bíblicas e mensagens edificantes.">
+    <meta name="twitter:image" content="src/imgs/logo.png">
+    <meta name="twitter:site" content="@bibliaon.oficial">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="src/imgs/logo.png" type="image/png">
     <link rel="stylesheet" href="src/styles/style.css">
@@ -17,14 +29,14 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation" aria-label="Menu principal">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="src/imgs/logo.png" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px;">
+            <a class="navbar-brand d-flex align-items-center" href="#" aria-label="Página inicial">
+                <img src="src/imgs/logo.png" alt="Logo Versículo do Dia" style="width: 40px; height: 40px; margin-right: 10px;">
                 <span style="font-family: 'Times New Roman', Times, serif;">VERSÍCULO DO DIA</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu de navegação">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -42,15 +54,16 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar" aria-label="Menu lateral">
                 <div class="position-sticky">
                     <h3>Menu</h3>
                     <ul class="nav flex-column">
-                        <li class="nav-item"><a href="#" class="nav-link">Antigo Testamento</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Novo Testamento</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Versículos</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Inspiração Diária</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Mais</a></li>
+                        <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+                        <li class="nav-item"><a href="antigo-testamento.html" class="nav-link">Antigo Testamento</a></li>
+                        <li class="nav-item"><a href="novo-testamento.html" class="nav-link">Novo Testamento</a></li>
+                        <li class="nav-item"><a href="versiculos.html" class="nav-link">Versículos</a></li>
+                        <li class="nav-item"><a href="10-mandamentos.html" class="nav-link">10 Mandamentos</a></li>
+                        <li class="nav-item"><a href="inspiracao-diaria.html" class="nav-link">Inspiração Diária</a></li>
                     </ul>
                 </div>
             </nav>
@@ -59,6 +72,13 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-4" style="min-height: 80vh;">
                 <h2>Versículo do Dia</h2>
                 <p>Diariamente um versículo ou passagem bíblica para melhorar e inspirar o seu dia.</p>
+
+                <!-- Busca de versículos -->
+                <form id="search-form" class="mb-4 d-flex flex-wrap align-items-center" role="search" aria-label="Buscar versículos">
+                    <input type="text" id="search-input" class="form-control me-2 mb-2" placeholder="Buscar por tema ou palavra-chave..." aria-label="Buscar por tema ou palavra-chave" style="max-width: 350px;">
+                    <button type="submit" class="btn btn-info mb-2" aria-label="Buscar">Buscar</button>
+                </form>
+                <div id="search-results" class="mb-4"></div>
 
                 <div id="main-content" class="d-flex justify-content-between align-items-start">
                     <!-- Container do Versículo -->
@@ -97,15 +117,46 @@
                     <!-- Container de Inscrição -->
                     <div id="email-container">
                         <h4>Receba o versículo diário no seu e-mail!</h4>
-                        <form id="subscription-form">
-                            <input type="email" id="email-input" placeholder="Digite seu e-mail" required>
-                            <button type="submit" class="btn btn-primary mt-2">Inscrever-se</button>
+                        <form id="subscription-form" autocomplete="email" aria-label="Formulário de inscrição para receber versículo diário">
+                            <input type="email" id="email-input" placeholder="Digite seu e-mail" required aria-required="true" aria-label="Digite seu e-mail" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                            <button type="submit" class="btn btn-primary mt-2" aria-label="Inscrever-se">Inscrever-se</button>
                         </form>
                     </div>
                 </div>
             </main>
         </div>
     </div>
+
+    <!-- Seção de Depoimentos -->
+    <section id="depoimentos" class="container my-5">
+        <h3 class="mb-4 text-center">Depoimentos de quem foi abençoado</h3>
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">“O versículo do dia sempre fala ao meu coração. Obrigado por esse projeto!”</p>
+                        <footer class="blockquote-footer">Maria S.</footer>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">“Receber a Palavra logo cedo me dá forças para o dia. Deus abençoe!”</p>
+                        <footer class="blockquote-footer">João P.</footer>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">“Compartilho sempre com minha família. É uma bênção diária!”</p>
+                        <footer class="blockquote-footer">Ana L.</footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Popup de Doação -->
     <div id="donation-popup" class="popup">
@@ -120,29 +171,57 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-light py-4 mt-4">
+    <footer class="bg-light py-4 mt-4" role="contentinfo">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <h4>Bíblia Sagrada Online</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#">Versículos</a></li>
-                        <li><a href="#">10 Mandamentos</a></li>
-                        <li><a href="#">Estudos Bíblicos</a></li>
-                        <li><a href="#">Devocional Diário</a></li>
+                        <li><a href="versiculos.html" class="nav-link">Versículos</a></li>
+                        <li><a href="10-mandamentos.html" class="nav-link">10 Mandamentos</a></li>
                     </ul>
                 </div>
                 <div class="col-md-6 text-end">
                     <p>© 2025 Versículo do Dia - Todos os direitos reservados.</p>
                     <div class="social-media">
-                        <a href="#">Facebook</a> |
-                        <a href="#">Instagram</a> |
-                        <a href="#">YouTube</a>
+                        <a href="https://www.facebook.com/bibliaon.oficial" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a> |
+                        <a href="https://www.instagram.com/bibliaon.oficial/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a> |
+                        <a href="https://www.youtube.com/@BibliaonOficial" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
                     </div>
+                </div>
+            </div>
+            <div class="row align-items-center mt-3">
+                <div class="col-auto">
+                    <label for="language-selector" class="mb-0 me-2">Idioma:</label>
+                </div>
+                <div class="col-auto">
+                    <select id="language-selector" class="form-select form-select-sm w-auto d-inline-block">
+                        <option value="pt">Português</option>
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                    </select>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Modal de Agradecimento -->
+    <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="thankYouModalLabel">Obrigado pela sua inscrição!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Seu e-mail foi cadastrado com sucesso.<br>Você começará a receber o versículo do dia em breve.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="src/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -206,113 +285,13 @@
                 // Formatação da mensagem com Markdown para negrito
                 const mensagem = `🕊 VERSÍCULO DE HOJE\n🗓 *${dataHoje}*\n\n"*${verseText}*"\n\n*${verseReference}*\n\n🌐 Acesse o site para mais: https://gabriel-rocha.github.io/versiculo-do-dia/`;
 
-                const linkWhatsApp = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensagem)}`;
-                const linkFacebook = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(mensagem)}`;
-                const linkTwitter = `https://twitter.com/intent/tweet?text=${encodeURIComponent(mensagem)}&url=${encodeURIComponent(window.location.href)}&hashtags=Fé,Bíblia`;
-
-                // Atualizando os links de compartilhamento
-                document.getElementById('share-whatsapp').href = linkWhatsApp;
-                document.getElementById('share-facebook').href = linkFacebook;
-                document.getElementById('share-twitter').href = linkTwitter;
+                // Atualizar o link de compartilhamento
+                const shareLink = document.getElementById("share-whatsapp");
+                shareLink.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensagem)}`;
             }
 
-            // Chama a função para gerar os links ao carregar a página
             gerarMensagemVersiculo();
         });
     </script>
-
-    <script>
-        // Mostrar o popup ao carregar a página
-        window.addEventListener('load', () => {
-            const popup = document.getElementById('donation-popup');
-            popup.classList.add('show');
-        });
-
-        // Fechar o popup ao clicar no botão
-        document.getElementById('close-popup').addEventListener('click', () => {
-            const popup = document.getElementById('donation-popup');
-            popup.classList.remove('show');
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const likeButton = document.getElementById("like-button");
-            const dislikeButton = document.getElementById("dislike-button");
-
-            likeButton.addEventListener("click", () => {
-                mostrarMensagemFeedback("Obrigado por sua avaliação! Ficamos felizes que você gostou do versículo. 🙌", "success");
-            });
-
-            dislikeButton.addEventListener("click", () => {
-                mostrarMensagemFeedback("Obrigado pelo seu feedback! Vamos continuar trabalhando para inspirar mais pessoas. 🙏", "danger");
-            });
-
-            function mostrarMensagemFeedback(mensagem, tipo) {
-                // Remover qualquer mensagem existente
-                const mensagemExistente = document.querySelector(".feedback-message");
-                if (mensagemExistente) {
-                    mensagemExistente.remove();
-                }
-
-                // Criar nova mensagem
-                const feedbackMessage = document.createElement("div");
-                feedbackMessage.className = `feedback-message ${tipo}`;
-                feedbackMessage.textContent = mensagem;
-
-                // Adicionar ao corpo do documento
-                document.body.appendChild(feedbackMessage);
-
-                // Remover mensagem após 5 segundos
-                setTimeout(() => feedbackMessage.remove(), 5000);
-            }
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const form = document.getElementById("subscription-form");
-            const emailInput = document.getElementById("email-input");
-
-            form.addEventListener("submit", (event) => {
-                event.preventDefault(); // Evita o comportamento padrão do formulário
-
-                const email = emailInput.value.trim();
-
-                if (email) {
-                    // Mostrar mensagem de sucesso
-                    mostrarMensagemFeedback("E-mail cadastrado com sucesso!", "success");
-
-                    // Limpar o campo de e-mail
-                    emailInput.value = "";
-                } else {
-                    // Mostrar mensagem de erro
-                    mostrarMensagemFeedback("Por favor, insira um e-mail válido.", "error");
-                }
-            });
-
-            // Função para criar e mostrar a notificação
-            function mostrarMensagemFeedback(mensagem, tipo) {
-                // Remover qualquer mensagem existente
-                const mensagemExistente = document.querySelector(".feedback-message");
-                if (mensagemExistente) {
-                    mensagemExistente.remove();
-                }
-
-                // Criar nova mensagem
-                const feedbackMessage = document.createElement("div");
-                feedbackMessage.className = `feedback-message ${tipo}`;
-                feedbackMessage.textContent = mensagem;
-
-                // Adicionar ao corpo do documento
-                document.body.appendChild(feedbackMessage);
-
-                // Remover mensagem após 5 segundos
-                setTimeout(() => feedbackMessage.remove(), 5000);
-            }
-        });
-    </script>
-
 </body>
-
 </html>

@@ -421,3 +421,236 @@ footer a:hover {
     90% { opacity: 1; }
     100% { opacity: 0; transform: translateY(-10px); }
 }
+
+/* RESPONSIVIDADE E MELHORIAS GERAIS */
+@media (max-width: 992px) {
+    #main-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+    #verse-box, #email-container {
+        margin-right: 0 !important;
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    #main-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+    #verse-box, #email-container {
+        margin-right: 0 !important;
+        width: 100%;
+        min-width: 0;
+    }
+    .popup {
+        right: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95vw;
+        min-width: 0;
+        padding: 10px;
+        font-size: 15px;
+    }
+    .feedback-message {
+        right: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 80vw;
+        font-size: 1rem;
+        padding: 10px 5px;
+    }
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .navbar .navbar-brand span {
+        font-size: 1.1rem;
+    }
+}
+
+/* Sidebar como menu hambúrguer */
+@media (max-width: 768px) {
+    #sidebar {
+        display: none !important;
+    }
+}
+
+/* Melhorias de contraste e acessibilidade */
+#verse-box, #email-container, #donation-container {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+#verse-box h3, #donation-container h2, #sidebar h3 {
+    color: #ffe066;
+}
+#verse-box p, #email-container h4, #donation-container p {
+    color: #f8f9fa;
+}
+#email-container input[type="email"] {
+    background-color: #23272a;
+    color: #fff;
+    border: 1.5px solid #ffc107;
+}
+#email-container input[type="email"]:focus {
+    outline: 2px solid #ffc107;
+    background: #1b1c1d;
+}
+#email-container button[type="submit"] {
+    background-color: #ffc107;
+    color: #23272a;
+    font-weight: bold;
+}
+#email-container button[type="submit"]:hover {
+    background-color: #e0a800;
+    color: #fff;
+}
+
+/* Botões mais acessíveis */
+#like-button, #dislike-button, .btn-doacao, .btn {
+    font-size: 1.1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+#like-button:focus, #dislike-button:focus, .btn:focus {
+    outline: 2px solid #ffc107;
+    outline-offset: 2px;
+}
+
+/* Popup centralizado e responsivo */
+.popup {
+    max-width: 95vw;
+    left: unset;
+    right: 20px;
+    bottom: -300px;
+    transition: all 0.5s cubic-bezier(.4,2,.6,1);
+}
+.popup.show {
+    bottom: 20px;
+}
+
+/* Feedbacks centralizados em mobile */
+.feedback-message {
+    z-index: 2000;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Melhor contraste para feedbacks */
+.feedback-message.success {
+    background-color: #198754;
+    color: #fff;
+    border: 2px solid #28a745;
+}
+.feedback-message.error, .feedback-message.danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: 2px solid #c82333;
+}
+
+/* Ajuste de links inativos */
+.nav-link[disabled], .nav-link.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* Ajuste de espaçamento no footer */
+footer .row > div {
+    margin-bottom: 15px;
+}
+
+/* Contraste e visual dos cards de busca e depoimentos */
+.card, .card-body {
+    background: #fff !important;
+    color: #23272a !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    border-radius: 10px;
+}
+.card .card-text, .card .card-body, .card strong {
+    color: #23272a !important;
+}
+.blockquote-footer {
+    color: #343a40 !important;
+    background: #e9ecef;
+    border-radius: 3px;
+    padding-left: 8px;
+    font-size: 1rem;
+}
+
+/* Overlay escuro no fundo do site para destacar conteúdo */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(30,32,34,0.60);
+    z-index: 0;
+    pointer-events: none;
+}
+body > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Garantir que cards fiquem acima do overlay */
+.card, .card-body {
+    position: relative;
+    z-index: 2;
+}
+
+/* Footer fixo no final da página */
+html, body {
+    height: 100%;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+footer {
+    margin-top: auto;
+    position: relative;
+    width: 100%;
+    z-index: 10;
+}
+
+/* Remover seletor flutuante */
+.footer-language { display: none !important; }
+
+/* Seletor de idioma no footer, lado a lado, discreto */
+.footer-lang-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+.footer-lang-row label {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    color: #23272a;
+    font-weight: 500;
+}
+.footer-lang-row select {
+    font-size: 0.95rem;
+    padding: 2px 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #f8f9fa;
+    color: #23272a;
+    outline: none;
+    min-width: 110px;
+}
+@media (max-width: 600px) {
+    .footer-lang-row {
+        justify-content: center;
+        font-size: 0.9rem;
+    }
+    .footer-lang-row select {
+        font-size: 0.9rem;
+        min-width: 90px;
+    }
+}
