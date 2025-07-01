@@ -59,12 +59,18 @@ document.addEventListener("DOMContentLoaded", () => {
             const email = emailInput.value.trim();
             const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             if (regex.test(email)) {
+                // Enviar para o Apps Script Web App como x-www-form-urlencoded (compatível com no-cors)
+                const formData = new URLSearchParams();
+                formData.append('email', email);
+                fetch('https://script.google.com/macros/s/AKfycbyc9KC-_QluCmZiClpZFcQLa4yjCRO535-aIu7zEbEcnUkb4JuYXFAobIrxlbGB1_MF/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formData
+                });
                 mostrarMensagemFeedback("E-mail cadastrado com sucesso!", "success");
                 emailInput.value = "";
                 emailInput.setAttribute('aria-invalid', 'false');
-                // Exibir modal de agradecimento
-                const thankYouModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
-                thankYouModal.show();
             } else {
                 mostrarMensagemFeedback("Por favor, insira um e-mail válido.", "error");
                 emailInput.setAttribute('aria-invalid', 'true');
