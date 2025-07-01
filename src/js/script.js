@@ -250,4 +250,48 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('language-selector').addEventListener('change', function() {
         setLanguage(this.value);
     });
+
+    // Overlay de loading
+    function criarLoadingOverlay() {
+        if (document.getElementById('loading-overlay')) return;
+        const overlay = document.createElement('div');
+        overlay.id = 'loading-overlay';
+        overlay.innerHTML = '<div class="spinner-border text-warning" role="status" aria-label="Carregando..."><span class="visually-hidden">Carregando...</span></div>';
+        document.body.appendChild(overlay);
+    }
+    let loadingStart = null;
+    function mostrarLoading() {
+        criarLoadingOverlay();
+        const overlay = document.getElementById('loading-overlay');
+        overlay.style.display = 'flex';
+        overlay.classList.remove('fade-out');
+        loadingStart = Date.now();
+    }
+    function esconderLoading() {
+        const overlay = document.getElementById('loading-overlay');
+        if (overlay) {
+            const elapsed = Date.now() - (loadingStart || 0);
+            const minTime = 1000;
+            const delay = Math.max(0, minTime - elapsed);
+            setTimeout(() => {
+                overlay.classList.add('fade-out');
+                setTimeout(() => { overlay.style.display = 'none'; }, 400);
+            }, delay);
+        }
+    }
+    // Exibir loading ao carregar a página
+    window.addEventListener('DOMContentLoaded', mostrarLoading);
+    window.addEventListener('load', esconderLoading);
+    // Exibir loading ao clicar em links internos
+    function ativarLoadingLinks() {
+        document.querySelectorAll('a[href]').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && !href.startsWith('http') && !href.startsWith('mailto:') && !href.startsWith('#')) {
+                link.addEventListener('click', function(e) {
+                    mostrarLoading();
+                });
+            }
+        });
+    }
+    window.addEventListener('DOMContentLoaded', ativarLoadingLinks);
 });

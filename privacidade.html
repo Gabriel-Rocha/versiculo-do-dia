@@ -33,6 +33,9 @@
     </script>
 </head>
 <body>
+    <div id="loading-overlay" style="display:none;position:fixed;z-index:99999;top:0;left:0;width:100vw;height:100vh;align-items:center;justify-content:center;">
+        <div class="loader" role="status" aria-label="Carregando..."></div>
+    </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation" aria-label="Menu principal">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="Página inicial">
@@ -53,13 +56,7 @@
             </div>
         </div>
     </nav>
-    <!-- Breadcrumbs -->
-    <nav aria-label="breadcrumb" class="container mt-3">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Início</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Política de Privacidade</li>
-        </ol>
-    </nav>
+
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
@@ -75,7 +72,7 @@
                         <li class="nav-item"><a href="inspiracao-diaria.html" class="nav-link">Inspiração Diária</a></li>
                         <li class="nav-item"><a href="faq.html" class="nav-link">Perguntas Frequentes</a></li>
                         <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
-                        <li class="nav-item"><a href="privacidade.html" class="nav-link active">Política de Privacidade</a></li>
+                        <li class="nav-item"><a href="privacidade.html" class="nav-link">Política de Privacidade</a></li>
                     </ul>
                 </div>
             </nav>
@@ -137,6 +134,7 @@
             </div>
         </div>
     </footer>
+    <script src="src/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html> 

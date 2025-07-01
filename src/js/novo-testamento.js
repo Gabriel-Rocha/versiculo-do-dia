@@ -5,6 +5,21 @@ document.addEventListener('DOMContentLoaded', function() {
     let livroAtual = null;
     let capituloAtual = null;
 
+    function mostrarLoading() {
+        const overlay = document.getElementById('loading-overlay');
+        if (overlay) {
+            overlay.style.display = 'flex';
+            overlay.classList.remove('fade-out');
+        }
+    }
+    function esconderLoading() {
+        const overlay = document.getElementById('loading-overlay');
+        if (overlay) {
+            overlay.classList.add('fade-out');
+            setTimeout(() => { overlay.style.display = 'none'; }, 400);
+        }
+    }
+
     function renderLivros() {
         container.innerHTML = '<h2 class="mb-4">Livros do Novo Testamento</h2>';
         const livros = biblia.slice(39); // Novo Testamento
@@ -60,13 +75,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     container.innerHTML = '<div class="text-center text-info">Carregando livros...</div>';
+    mostrarLoading();
     fetch(apiUrl)
         .then(res => res.json())
         .then(data => {
             biblia = data;
             renderLivros();
+            esconderLoading();
         })
         .catch(() => {
             container.innerHTML = '<div class="alert alert-danger">Erro ao carregar os livros do Novo Testamento.</div>';
+            esconderLoading();
         });
 }); 

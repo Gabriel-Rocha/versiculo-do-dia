@@ -10,8 +10,24 @@ document.addEventListener('DOMContentLoaded', function() {
     let paginaAtual = 1;
     let totalPaginas = 1;
 
+    function mostrarLoading() {
+        const overlay = document.getElementById('loading-overlay');
+        if (overlay) {
+            overlay.style.display = 'flex';
+            overlay.classList.remove('fade-out');
+        }
+    }
+    function esconderLoading() {
+        const overlay = document.getElementById('loading-overlay');
+        if (overlay) {
+            overlay.classList.add('fade-out');
+            setTimeout(() => { overlay.style.display = 'none'; }, 400);
+        }
+    }
+
     function renderVersiculos() {
         versiculosLista.innerHTML = '<div class="text-center text-info">Carregando versículos...</div>';
+        mostrarLoading();
         fetch(apiUrl)
             .then(res => res.json())
             .then(data => {
@@ -29,9 +45,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 versiculosFiltrados = todosVersiculos;
                 totalPaginas = Math.ceil(versiculosFiltrados.length / porPagina);
                 mostrarPagina(1);
+                esconderLoading();
             })
             .catch(() => {
                 versiculosLista.innerHTML = '<div class="alert alert-danger">Erro ao carregar os versículos.</div>';
+                esconderLoading();
             });
     }
 

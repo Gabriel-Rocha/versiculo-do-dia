@@ -46,6 +46,9 @@
     </style>
 </head>
 <body>
+    <div id="loading-overlay" style="display:none;position:fixed;z-index:99999;top:0;left:0;width:100vw;height:100vh;align-items:center;justify-content:center;">
+        <div class="loader" role="status" aria-label="Carregando..."></div>
+    </div>
     <!-- Cabeçalho -->
     <header class="bg-dark py-3">
         <div class="container d-flex justify-content-between align-items-center">
@@ -61,6 +64,25 @@
         </div>
     </header>
 
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar" aria-label="Menu lateral">
+                <div class="position-sticky">
+                    <h3>Menu</h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+                        <li class="nav-item"><a href="antigo-testamento.html" class="nav-link">Antigo Testamento</a></li>
+                        <li class="nav-item"><a href="novo-testamento.html" class="nav-link">Novo Testamento</a></li>
+                        <li class="nav-item"><a href="versiculos.html" class="nav-link">Versículos</a></li>
+                        <li class="nav-item"><a href="10-mandamentos.html" class="nav-link">10 Mandamentos</a></li>
+                        <li class="nav-item"><a href="inspiracao-diaria.html" class="nav-link">Inspiração Diária</a></li>
+                        <li class="nav-item"><a href="faq.html" class="nav-link">Perguntas Frequentes</a></li>
+                        <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+                        <li class="nav-item"><a href="privacidade.html" class="nav-link">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+            </nav>
     <!-- Conteúdo Principal -->
     <main id="donation-page" class="py-5 bg-light">
         <div class="container">
