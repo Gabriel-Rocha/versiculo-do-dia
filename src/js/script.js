@@ -300,4 +300,38 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     window.addEventListener('DOMContentLoaded', ativarLoadingLinks);
+
+    // Envio do formulário de contato para o Google Apps Script (padronizado)
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const mensagem = document.getElementById('mensagem').value.trim();
+            const created_at = new Date().toISOString();
+
+            // Validação simples
+            if (!nome || !email || !mensagem) {
+                document.getElementById('contact-feedback').innerHTML = '<div class="alert alert-danger">Preencha todos os campos obrigatórios.</div>';
+                return;
+            }
+
+            const formData = new URLSearchParams();
+            formData.append('nome', nome);
+            formData.append('email', email);
+            formData.append('mensagem', mensagem);
+            formData.append('created_at', created_at);
+
+            fetch('https://script.google.com/macros/s/AKfycbxkANGBRxS34GIrii0XztC3SFUhBIUuUDpWAjMe1mcTE-WikENESM_NZBrQv-LYVf9e/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formData
+            });
+
+            document.getElementById('contact-feedback').innerHTML = '<div class="alert alert-success">Mensagem enviada com sucesso! Em breve entraremos em contato.</div>';
+            contactForm.reset();
+        });
+    }
 });
